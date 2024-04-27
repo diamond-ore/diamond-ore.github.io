@@ -1,4 +1,5 @@
 import {encodeURIAggressive, encodeURINonDestructive, decodeURINonDestructive} from "./encoders/url.js";
+import {encodeMorse, decodeMorse} from "./encoders/morse.js";
 
 const mode = document.getElementById("mode");
 const encode = document.getElementById("encode");
@@ -23,6 +24,10 @@ const codes = {
     "Base2 (Binary)": {
         encode: text => text.split("").map(c => c.charCodeAt(0).toString(2).padStart(8, "0")).join(" "),
         decode: text => text.split(" ").filter(p => !!p).map(c => String.fromCharCode(parseInt(c, 2))).join("")
+    },
+    "Morse": {
+        encode: encodeMorse,
+        decode: decodeMorse
     },
     "URL": {
         encode: encodeURI,

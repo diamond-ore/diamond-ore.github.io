@@ -2,8 +2,7 @@ function encodeURIAggressive(text) {
     var encoded_text = "";
 
     const characters = encodeURI(text).split(/(%\w\w)/g).filter(t => t !== "");
-    for (const i in characters) {
-        let c = characters[i]
+    for (const c of characters) {
         if (c.startsWith("%")) {
             encoded_text += c;
         }
