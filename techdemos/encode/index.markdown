@@ -22,4 +22,4 @@ Mode:
 <textarea id="outputText" rows="10" class="panel" spellcheck="false" style="resize:none; width:100%;"></textarea>
 
 <!-- Encode/Decode -->
-<script src="./js/main.js"></script>
+<script src="./js/main.js" type="module"></script>
