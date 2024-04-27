@@ -28,15 +28,15 @@ const codes = {
         encode: encodeURI,
         decode: decodeURI
     },
-    "URL (component)": {
+    "URL (Component)": {
         encode: encodeURIComponent,
         decode: decodeURIComponent
     },
-    "URL (aggressive)": {
+    "URL (Aggressive)": {
         encode: encodeURIAggressive,
         decode: text => decodeURIComponent(decodeURI(text))
     },
-    "URL (aggressive, non destructive)": {
+    "URL (Aggressive, non destructive)": {
         encode: encodeURINonDestructive,
         decode: decodeURINonDestructive
     },
