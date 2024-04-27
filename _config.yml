@@ -4,16 +4,16 @@ tagline: My personal webpage.
 description: >-
   My personal webpage.
 baseurl: ""
-url: "https://lukam-oss.github.io"
+url: "https://ghluka.github.io"
 
 github:
-  username: lukam-oss
+  username: ghluka
 
 social:
   name: Luka
-  email: 164436043+lukam-oss@users.noreply.github.com
+  email: 164436043+ghluka@users.noreply.github.com
   links:
-    - https://github.com/lukam-oss
+    - https://github.com/ghluka
 
 theme: jekyll-theme-chirpy
 lang: en
