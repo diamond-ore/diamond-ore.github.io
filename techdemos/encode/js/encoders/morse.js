@@ -17,8 +17,6 @@ function decodeMorse(code) {
 
     for (const sequence of code.split(" ")) {
         for (const [key, value] of Object.entries(morse)) {
-            console.log(value)
-            console.log(sequence)
             if (sequence == value) { 
                 text += key;
             }
