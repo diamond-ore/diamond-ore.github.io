@@ -1,12 +1,26 @@
-const encodeURIAggressive = text => "%" + text.split("").map(c => c.charCodeAt(0).toString(16).padStart(2, "0")).join("%").toUpperCase();
-const decodeURIAggressive = text => text.split("%").filter(p => !!p).map(c => String.fromCharCode(parseInt(c, 16))).join("");
+function encodeURIAggressive(text) {
+    var encoded_text = "";
+
+    const characters = encodeURI(text).split(/(%\w\w)/g).filter(t => t !== "");
+    for (const i in characters) {
+        let c = characters[i]
+        if (c.startsWith("%")) {
+            encoded_text += c;
+        }
+        else {
+            encoded_text += "%" + c.split("").map(t => t.charCodeAt(0).toString(16).padStart(2, "0")).join("%").toUpperCase();
+        }
+    }
+
+    return encoded_text;
+}
 
 function encodeURINonDestructive(text) {
     var encoded_text = encodeURIAggressive(text);
 
     if (encoded_text.includes("%3A%2F%2F")) {
         encoded_text = encoded_text.replace("%3A%2F%2F", "://");
-        const protocol = decodeURIAggressive(encoded_text.split("://")[0])
+        const protocol = decodeURI(encoded_text.split("://")[0])
         encoded_text = protocol + "://" + encoded_text.split("://")[1];
     }
     
@@ -23,7 +37,7 @@ function decodeURINonDestructive(text) {
     
     text = text.replaceAll("/", "%2F").replaceAll("?", "%3F").replaceAll("&", "%26").replaceAll("+", "%2B").replaceAll("=", "%3D");
 
-    return decodeURIAggressive(text);
+    return decodeURIComponent(decodeURI(text));
 }
 
-export {encodeURIAggressive, decodeURIAggressive, encodeURINonDestructive, decodeURINonDestructive}
+export {encodeURIAggressive, encodeURINonDestructive, decodeURINonDestructive}

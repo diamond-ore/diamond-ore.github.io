@@ -1,4 +1,4 @@
-import {encodeURIAggressive, decodeURIAggressive, encodeURINonDestructive, decodeURINonDestructive} from "./encoders/url.js";
+import {encodeURIAggressive, encodeURINonDestructive, decodeURINonDestructive} from "./encoders/url.js";
 
 const mode = document.getElementById("mode");
 const encode = document.getElementById("encode");
@@ -25,16 +25,16 @@ const codes = {
         decode: text => text.split(" ").filter(p => !!p).map(c => String.fromCharCode(parseInt(c, 2))).join("")
     },
     "URL": {
-        encode: text => encodeURI(text),
-        decode: text => decodeURI(text)
+        encode: encodeURI,
+        decode: decodeURI
     },
     "URL (component)": {
-        encode: text => encodeURIComponent(text),
-        decode: text => decodeURIComponent(text)
+        encode: encodeURIComponent,
+        decode: decodeURIComponent
     },
     "URL (aggressive)": {
         encode: encodeURIAggressive,
-        decode: decodeURIAggressive
+        decode: text => decodeURIComponent(decodeURI(text))
     },
     "URL (aggressive, non destructive)": {
         encode: encodeURINonDestructive,
