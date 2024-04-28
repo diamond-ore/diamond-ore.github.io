@@ -2,14 +2,19 @@ var morse = {".": ".-.-.-", ",": "--..--", "?": "..--..", "'": ".----.", "/": "-
 
 function encodeMorse(text) {
     text = text.toLowerCase();
+    var encoded_text = ""
 
-    for (const [key, value] of Object.entries(morse)) {
-        text = text.replaceAll(key, value + " ");
+    for (const character of text.split("")) {
+        for (const [key, value] of Object.entries(morse)) {
+            if (character == key) { 
+                encoded_text += value + " ";
+            }
+        }
     }
 
-    text = text.substring(0, text.length - 1);
+    encoded_text = encoded_text.substring(0, encoded_text.length - 1);
 
-    return text;
+    return encoded_text;
 }
 
 function decodeMorse(code) {
