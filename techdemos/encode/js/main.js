@@ -21,6 +21,10 @@ const codes = {
         encode: text => text.split("").map(c => c.charCodeAt(0).toString(10).padStart(3, "0")).join(" ").toUpperCase(),
         decode: text => text.split(" ").filter(p => !!p).map(c => String.fromCharCode(parseInt(c, 10))).join("")
     },
+    "Base8 (Octal)": {
+        encode: text => text.split("").map(c => c.charCodeAt(0).toString(8).padStart(3, "0")).join(" ").toUpperCase(),
+        decode: text => text.split(" ").filter(p => !!p).map(c => String.fromCharCode(parseInt(c, 8))).join("")
+    },
     "Base2 (Binary)": {
         encode: text => text.split("").map(c => c.charCodeAt(0).toString(2).padStart(8, "0")).join(" "),
         decode: text => text.split(" ").filter(p => !!p).map(c => String.fromCharCode(parseInt(c, 2))).join("")
