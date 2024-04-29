@@ -10,8 +10,8 @@ const output = document.getElementById("outputText");
 
 const codes = {
     "Base64": {
-        encode: text => btoa(text),
-        decode: text => atob(text)
+        encode: btoa,
+        decode: atob
     },
     "Base16 (Hexadecimal)": {
         encode: text => text.split("").map(c => c.charCodeAt(0).toString(16).padStart(2, "0")).join("").toUpperCase(),
